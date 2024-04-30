@@ -1,22 +1,24 @@
-// Inside user.routes.js
+import { Router } from "express";
+import {registerUser} from "../controllers/user.ctrl.js";
+import { upload } from "../middlewares/multer.middleware.js"
+//import { verifyJWT } from "../middlewares/auth.middleware.js";
 
-import express from 'express';
-import { registerUser } from '../controllers/user.ctrl.js';
-import {upload} from "../middlewares/multer.middleware.js"
 
-const router = express.Router();
+const router = Router()
 
-// Ensure you're handling POST request specifically for '/register'
-router.post('/register',upload.fields([
-{
-    name:"avatar",
-    maxCount:1
-},
-{
-    name:"coverImage",
-    maxCount:5
-}
+router.route("/register").post(
+    upload.fields([
+        {
+            name: "avatar",
+            maxCount: 1
+        },
+        {
+            name: "coverImage",
+            maxCount: 1
+        }
+    ]),
+    registerUser
+)
 
-]) , registerUser);
 
 export default router
