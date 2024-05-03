@@ -6,7 +6,6 @@ import { Comment } from "../models/comment.model.js";
 import { Like } from "../models/like.model.js";
 import { uploadOnCloudinary,deleteFromCloudinary } from "../utils/cloudinary.js"
 import { ApiResponse } from "../utils/ApiResponse.js";
-import jwt from "jsonwebtoken"
 import mongoose, { isValidObjectId } from "mongoose";
 import fs from "fs";
 
