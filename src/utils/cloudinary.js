@@ -1,6 +1,7 @@
 import { v2 as cloudinary } from "cloudinary"
 import { log } from "console";
 import fs from "fs"
+import { ApiError } from "./ApiError.js";
 
 
 cloudinary.config({
@@ -34,7 +35,23 @@ const uploadOnCloudinary = async (localFilePath) => {
     }
 };
 
+const deleteFromCloudinary = async (filePath) => {
+    try {
+        if (!filePath) null;
+
+        await cloudinary.uploader.destroy(
+            filePath.split("/").pop().split(".")[0],
+            (error) => {
+                if (error) {
+                    throw new ApiError(404, error, "Image not found");
+                }
+            }
+        );
+    } catch (error) {
+        console.log("error from cloudinay :", error);
+    }
+};
 
 
 
-export { uploadOnCloudinary }
+export { uploadOnCloudinary, deleteFromCloudinary }
