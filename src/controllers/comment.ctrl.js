@@ -95,7 +95,6 @@ const getVideoComments= asyncHandler(async(req,res)=>{
     ]);
 
     comments = comments[0];
-    console.log(comments[0]);
     comments.metadata = { ...comments.metadata[0] };
 
     return res
