@@ -12,6 +12,9 @@ ___This is complete YouTube backend project, where have tried to implement all b
 // HTTPS
 https://github.com/iamsamir62/videoplay.git
 ```
+---
+Database model :-(https://app.eraser.io/workspace/TVvbyXqdiKdlw5w1V4eg?origin=share)
+---
 ### Controllers:
 + **User controller:**
     + `userChangePassword`: To change password.
